@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		1F74854027DB668F006A6D03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74853F27DB668F006A6D03 /* AppDelegate.swift */; };
 		1F74854227DB668F006A6D03 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74854127DB668F006A6D03 /* SceneDelegate.swift */; };
-		1F74854427DB668F006A6D03 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74854327DB668F006A6D03 /* ViewController.swift */; };
 		1F74854727DB668F006A6D03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F74854527DB668F006A6D03 /* Main.storyboard */; };
 		1F74854927DB668F006A6D03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F74854827DB668F006A6D03 /* Assets.xcassets */; };
 		1F74854C27DB668F006A6D03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F74854A27DB668F006A6D03 /* LaunchScreen.storyboard */; };
+		1F74855427DB6ED9006A6D03 /* PlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74855327DB6ED9006A6D03 /* PlaceTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1F74853C27DB668F006A6D03 /* Places.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Places.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F74853F27DB668F006A6D03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F74854127DB668F006A6D03 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1F74854327DB668F006A6D03 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1F74854627DB668F006A6D03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F74854827DB668F006A6D03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F74854B27DB668F006A6D03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F74854D27DB668F006A6D03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F74855327DB6ED9006A6D03 /* PlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +58,7 @@
 			children = (
 				1F74853F27DB668F006A6D03 /* AppDelegate.swift */,
 				1F74854127DB668F006A6D03 /* SceneDelegate.swift */,
-				1F74854327DB668F006A6D03 /* ViewController.swift */,
+				1F74855327DB6ED9006A6D03 /* PlaceTableViewController.swift */,
 				1F74854527DB668F006A6D03 /* Main.storyboard */,
 				1F74854827DB668F006A6D03 /* Assets.xcassets */,
 				1F74854A27DB668F006A6D03 /* LaunchScreen.storyboard */,
@@ -138,9 +138,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F74854427DB668F006A6D03 /* ViewController.swift in Sources */,
 				1F74854027DB668F006A6D03 /* AppDelegate.swift in Sources */,
 				1F74854227DB668F006A6D03 /* SceneDelegate.swift in Sources */,
+				1F74855427DB6ED9006A6D03 /* PlaceTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,7 +301,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ilines.nsu.Places;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -329,7 +329,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ilines.nsu.Places;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
