@@ -15,7 +15,7 @@ class PlaceTableViewCell: UITableViewCell {
   @IBOutlet weak var typeLabel: UILabel!
   
   func configure(with place: Place) {
-    placeImage.image  = UIImage(named: place.image)
+    placeImage.image  = place.image
     placeImage.layer.cornerRadius = placeImage.frame.size.height / 2
     placeImage.clipsToBounds = true
     nameLabel.text = place.name

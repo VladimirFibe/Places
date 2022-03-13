@@ -29,6 +29,13 @@ class PlaceTableViewController: UITableViewController {
   // MARK: - Actions
   
   @IBAction func cancelAction(_ segue: UIStoryboardSegue) {
-    
+    if segue.identifier == "SaveSegue" {
+      guard let placeVC = segue.source as? NewPlaceTableViewController else { return }
+      placeVC.savePlace()
+      if let place = placeVC.place {
+        places.append(place)
+      }
+      tableView.reloadData()
+    }
   }
 }

@@ -8,15 +8,28 @@
 import UIKit
 
 class NewPlaceTableViewController: UITableViewController {
-  
-  @IBOutlet weak var imagePlace: UIImageView!
+  var place: Place?
+  var imageIsChanged = false
+  @IBOutlet weak var saveButton: UIBarButtonItem!
+  @IBOutlet weak var placeImage: UIImageView!
+  @IBOutlet weak var placeName: UITextField!
+  @IBOutlet weak var placeLocation: UITextField!
+  @IBOutlet weak var placeType: UITextField!
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    saveButton.isEnabled = false
+    placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     // Если лишние полосы, то
 //    tableView.tableFooterView = UIView()
   }
   
+  func savePlace() {
+    let name = placeName.text ?? "New"
+    let location = placeLocation.text ?? ""
+    let type = placeType.text ?? ""
+    let image = imageIsChanged ? placeImage.image : UIImage(named: "imagePlaceholder")
+    place = Place(name: name, location: location, type: type, image: image)
+  }
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if indexPath.row == 0 {
       let cameraIcon = UIImage(systemName: "camera")
@@ -51,12 +64,17 @@ extension NewPlaceTableViewController: UITextFieldDelegate {
     textField.resignFirstResponder()
     return true
   }
+  
+  @objc private func textFieldChanged() {
+    saveButton.isEnabled = placeName.text?.isEmpty == false
+  }
 }
 
 // MARK: - Work with image
 extension NewPlaceTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   func chooseImagePicker(_ source: UIImagePickerController.SourceType) {
     if UIImagePickerController.isSourceTypeAvailable(source) {
+      imageIsChanged = true
       let imagePicker = UIImagePickerController()
       imagePicker.delegate = self
       imagePicker.allowsEditing = true
@@ -66,9 +84,9 @@ extension NewPlaceTableViewController: UIImagePickerControllerDelegate, UINaviga
   }
   
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-    imagePlace.image = info[.editedImage] as? UIImage
-    imagePlace.contentMode = .scaleToFill
-    imagePlace.clipsToBounds = true
+    placeImage.image = info[.editedImage] as? UIImage
+    placeImage.contentMode = .scaleToFill
+    placeImage.clipsToBounds = true
     dismiss(animated: true)
   }
 }
