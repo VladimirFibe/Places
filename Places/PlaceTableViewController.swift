@@ -6,11 +6,23 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PlaceTableViewController: UITableViewController {
-  var places = Place.places
+  var places: Results<Place>!
   override func viewDidLoad() {
     super.viewDidLoad()
+    places = realm.objects(Place.self)
+  }
+  
+  // MARK: - Actions
+  
+  @IBAction func cancelAction(_ segue: UIStoryboardSegue) {
+    if segue.identifier == "SaveSegue" {
+      guard let placeVC = segue.source as? NewPlaceTableViewController else { return }
+      placeVC.savePlace()
+      tableView.reloadData()
+    }
   }
   
   // MARK: - Table view data source
@@ -26,16 +38,14 @@ class PlaceTableViewController: UITableViewController {
     return cell
   }
   
-  // MARK: - Actions
+  // MARK: - Table view delegate
   
-  @IBAction func cancelAction(_ segue: UIStoryboardSegue) {
-    if segue.identifier == "SaveSegue" {
-      guard let placeVC = segue.source as? NewPlaceTableViewController else { return }
-      placeVC.savePlace()
-      if let place = placeVC.place {
-        places.append(place)
-      }
-      tableView.reloadData()
+  override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    let place = places[indexPath.row]
+    let action = UIContextualAction(style: .destructive, title: "Delete") { action, view, completion in
+      StorageManger.deleteObject(place)
+      tableView.deleteRows(at: [indexPath], with: .automatic)
     }
+    return UISwipeActionsConfiguration(actions: [action])
   }
 }

@@ -5,24 +5,20 @@
 //  Created by Vladimir Fibe on 13.03.2022.
 //
 
-import Foundation
+import RealmSwift
 import UIKit
 
-struct Place {
-  var name: String
-  var location: String
-  var type: String
-  var image: UIImage?
-  
-  static let restaurantNames = [
-      "Burger Heroes", "Kitchen", "Bonsai", "Дастархан",
-      "Индокитай", "X.O", "Балкан Гриль", "Sherlock Holmes",
-      "Speak Easy", "Morris Pub", "Вкусные истории",
-      "Классик", "Love&Life", "Шок", "Бочка"
-  ]
-  static var places: [Place] {
-    restaurantNames.map {
-      Place(name: $0, location: "г. Алматы", type: "Столовая", image: UIImage(named: $0))
-    }
+class Place: Object {
+  @objc dynamic var name = ""
+  @objc dynamic var location: String?
+  @objc dynamic var type: String?
+  @objc dynamic var data: Data?
+
+  convenience init(name: String, location: String?, type: String?, data: Data?) {
+    self.init()
+    self.name = name
+    self.location = location
+    self.type = type
+    self.data = data
   }
 }

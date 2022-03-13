@@ -8,7 +8,6 @@
 import UIKit
 
 class NewPlaceTableViewController: UITableViewController {
-  var place: Place?
   var imageIsChanged = false
   @IBOutlet weak var saveButton: UIBarButtonItem!
   @IBOutlet weak var placeImage: UIImageView!
@@ -28,7 +27,13 @@ class NewPlaceTableViewController: UITableViewController {
     let location = placeLocation.text ?? ""
     let type = placeType.text ?? ""
     let image = imageIsChanged ? placeImage.image : UIImage(named: "imagePlaceholder")
-    place = Place(name: name, location: location, type: type, image: image)
+    let data = image?.pngData()
+    let place = Place(name: name,
+                      location: location,
+                      type: type,
+                      data: data)
+    StorageManger.saveObject(place)
+    
   }
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if indexPath.row == 0 {
