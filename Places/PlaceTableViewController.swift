@@ -26,11 +26,9 @@ class PlaceTableViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PlaceTableViewCell
     let title = restaurantNames[indexPath.row]
-    cell.textLabel?.text = title
-    cell.imageView?.image = UIImage(named: title)
-    cell.detailTextLabel?.text = "\(indexPath.row)"
+    cell.configure(with: title)
     return cell
   }
 }
