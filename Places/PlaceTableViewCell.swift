@@ -14,12 +14,12 @@ class PlaceTableViewCell: UITableViewCell {
   @IBOutlet weak var locationLabel: UILabel!
   @IBOutlet weak var typeLabel: UILabel!
   
-  func configure(with title: String) {
-    placeImage.image  = UIImage(named: title)
+  func configure(with place: Place) {
+    placeImage.image  = UIImage(named: place.image)
     placeImage.layer.cornerRadius = placeImage.frame.size.height / 2
     placeImage.clipsToBounds = true
-    nameLabel.text = title
-    locationLabel.text = "г. Алматы"
-    typeLabel.text = "Restoran"
+    nameLabel.text = place.name
+    locationLabel.text = place.location
+    typeLabel.text = place.type
   }
 }

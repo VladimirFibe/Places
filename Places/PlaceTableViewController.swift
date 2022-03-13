@@ -8,27 +8,27 @@
 import UIKit
 
 class PlaceTableViewController: UITableViewController {
-  let restaurantNames = [
-      "Burger Heroes", "Kitchen", "Bonsai", "Дастархан",
-      "Индокитай", "X.O", "Балкан Гриль", "Sherlock Holmes",
-      "Speak Easy", "Morris Pub", "Вкусные истории",
-      "Классик", "Love&Life", "Шок", "Бочка"
-  ]
+  var places = Place.places
   override func viewDidLoad() {
     super.viewDidLoad()
-    
   }
   
   // MARK: - Table view data source
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return restaurantNames.count
+    return places.count
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PlaceTableViewCell
-    let title = restaurantNames[indexPath.row]
-    cell.configure(with: title)
+    let place = places[indexPath.row]
+    cell.configure(with: place)
     return cell
+  }
+  
+  // MARK: - Actions
+  
+  @IBAction func cancelAction(_ segue: UIStoryboardSegue) {
+    
   }
 }
